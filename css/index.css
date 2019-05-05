@@ -1,0 +1,31 @@
+/* 入库添加按钮 */
+.btn-add{
+    margin-bottom: 25px;
+}
+/* 表格单元格固定 */
+.table-list{
+    table-layout: fixed;
+}
+/* input */
+.table-list input{
+    display: none;
+}
+.table-list .btn-ok, .table-list .btn-cancel{
+    display: none;
+}
+/* 编辑 */
+.edit .btn-ok, .edit .btn-cancel{
+    display: inline-block;
+}
+.edit .btn-edit, .edit .btn-del{
+    display: none;
+}
+.edit span{display: none;
+}
+.edit input{
+    display: inline-block;
+}
+
+.hidden{
+    display: none;
+}

@@ -338,6 +338,41 @@ var tools = {
 		// 过河拆桥
 		document.body.removeChild(script);
 		
+	},
+
+	/* ajax方法
+	 * @param  url <string> 请求的地址
+	 * @param  query <object>  请求携带的参数
+	 * @param  isJson <boolean>  是否是json格式的数据	
+	*/
+
+	ajaxGetPromise : function (url, query, isJson) {
+		isJson = isJson === undefined ? true : isJson;
+		// 如果有query再url后面拼接query
+		if(query){
+			url += "?";
+			for(var key in query){
+				url += key+"="+query[key]+"&";
+			}
+			url = url.slice(0, -1);
+		}
+		return new Promise((resolve, reject) => {
+			let ajax = new XMLHttpRequest();
+			ajax.open("GET", url, true);
+			ajax.send(null);
+			ajax.onreadystatechange = function () {
+				if(ajax.readyState === 4){
+					if(ajax.status === 200){
+						// 数据成功返回了
+						resolve(isJson ? JSON.parse(ajax.responseText) : ajax.responseText);
+					}else{
+						reject();
+					}
+				}
+			}
+		})
 	}
 }
+
+
 
